@@ -1,9 +1,17 @@
 { config, pkgs, ... }:
 
+let
+  vars = import ./vars.nix;
+in
 {
   # Bootloader & Kernel
   boot.loader.systemd-boot.enable = true;
+  # /boot is a small vfat partition: keep only the most recent generations.
+  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "nohibernate" ];
+  # NOTE: openrazer is an out-of-tree kernel module. If it fails to build on a
+  # brand-new kernel after an update, switch to pkgs.linuxPackages (default LTS).
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -22,7 +30,7 @@
   services.power-profiles-daemon.enable = true;
 
   hardware.openrazer.enable = true;
-  hardware.openrazer.users = [ "pavelzaikin" ];
+  hardware.openrazer.users = [ vars.username ];
 
   # Printing
   services.printing = {

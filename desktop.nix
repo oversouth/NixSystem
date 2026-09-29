@@ -12,6 +12,9 @@
   services.desktopManager.plasma6.enable = true;
   programs.niri.enable = true;
 
+  # Lock screen: swaylock needs a PAM service to be able to authenticate.
+  security.pam.services.swaylock = { };
+
   # Audio (Pipewire)
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
