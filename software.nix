@@ -13,9 +13,9 @@
     wl-clipboard waybar grim slurp swaybg rofi
     # Android & Dev
     android-studio heimdall samloader-rs android-tools
-    python3 python3Packages.pip cmake gcc git vscode godot nodejs tsx
-    # Networking & Misc
-    networkmanagerapplet obs-studio yandex-music tree
+    python3 cmake gcc git vscode godot nodejs tsx
+    # Networking & Misc (obs-studio comes from programs.obs-studio below)
+    networkmanagerapplet yandex-music tree
   ];
 
   programs.kdeconnect.enable = true;
@@ -35,7 +35,7 @@
     binfmt = true;
   };
 
-  # Nix-ld (бинарники)
+  # nix-ld (run unpatched binaries)
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc zlib libpng qt5.qtbase qt5.qtsvg qt5.qtx11extras

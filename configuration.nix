@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  vars = import ./vars.nix;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,20 +10,28 @@
     ./desktop.nix
     ./software.nix
     ./virtualization.nix
+    ./storage.nix
     ./environment.nix
   ];
-
-  # Storage
-  fileSystems."/mnt/games" = {
-    device = "/dev/disk/by-uuid/c2054c13-54eb-4770-976e-a72a074b7990";
-    fsType = "ext4";
-    options = [ "defaults" "nofail" ];
-  };
 
   # Network
   networking.hostName = "BBRWAX9";
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+
+  # The firewall is on by default. Open ports explicitly where needed.
+  # Waydroid's bridge needs DNS and DHCP to reach the host.
+  networking.firewall.interfaces.waydroid0 = {
+    allowedUDPPorts = [ 53 67 ];
+    allowedTCPPorts = [ 53 ];
+  };
+
+  # Nix maintenance
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimise.automatic = true;
 
   # Time / Locale
   time.timeZone = "Asia/Tbilisi";
@@ -38,10 +49,10 @@
   };
 
   # User Account
-  users.users.pavelzaikin = {
+  users.users.${vars.username} = {
     isNormalUser = true;
     shell = pkgs.bash;
-    description = "pavelzaikin";
+    description = vars.username;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -53,7 +64,6 @@
     packages = with pkgs; [
       telegram-desktop
       fastfetch
-      git
       micro
     ];
   };
