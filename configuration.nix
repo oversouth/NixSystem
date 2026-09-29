@@ -58,7 +58,6 @@ in
       "wheel"
       "adbusers"
       "kvm"
-      "libvirtd"
       "docker"
     ];
     packages = with pkgs; [

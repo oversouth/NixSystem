@@ -18,7 +18,6 @@
     networkmanagerapplet yandex-music tree
   ];
 
-  programs.kdeconnect.enable = true;
   programs.obs-studio.enable = true;
   programs.k3b.enable = true;
 
