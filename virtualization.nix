@@ -12,5 +12,6 @@
     enable = true;
     package = pkgs.waydroid-nftables;
   };
+
+  virtualisation.virtualbox.host.enable = true;
 }
-virtualisation.virtualbox.host.enable = true;
