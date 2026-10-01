@@ -15,7 +15,7 @@
     android-studio heimdall samloader-rs android-tools
     python3 cmake gcc git vscode godot nodejs tsx
     # Networking & Misc (obs-studio comes from programs.obs-studio below)
-    networkmanagerapplet yandex-music tree
+    networkmanagerapplet yandex-music tree ayugram-desktop
   ];
 
   programs.obs-studio.enable = true;
