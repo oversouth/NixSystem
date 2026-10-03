@@ -7,7 +7,7 @@
   };
 
   programs.virt-manager.enable = true;
-  programs.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enable = true;
   
   virtualisation.waydroid = {
     enable = true;
