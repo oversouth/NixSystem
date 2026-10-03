@@ -16,6 +16,8 @@
     python3 cmake gcc git vscode godot nodejs tsx
     # Networking & Misc (obs-studio comes from programs.obs-studio below)
     networkmanagerapplet yandex-music tree ayugram-desktop
+    
+    
   ];
 
   programs.obs-studio.enable = true;

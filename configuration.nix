@@ -24,7 +24,7 @@ in
     allowedUDPPorts = [ 53 67 ];
     allowedTCPPorts = [ 53 ];
   };
-
+  boot.kernelModules = [ "vmmon" "vmnet" ];
   # Nix maintenance
   nix.gc = {
     automatic = true;
