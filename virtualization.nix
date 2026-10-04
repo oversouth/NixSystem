@@ -8,6 +8,7 @@
 
   programs.virt-manager.enable = true;
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.vmware.host.enable = true;
   
   virtualisation.waydroid = {
     enable = true;
