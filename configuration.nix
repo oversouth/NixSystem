@@ -18,14 +18,24 @@ in
   networking.hostName = "BBRWAX9";
   networking.networkmanager.enable = true;
 
-  # The firewall is on by default. Open ports explicitly where needed.
-  # Waydroid's bridge needs DNS and DHCP to reach the host.
+  # Firewall rules for Waydroid bridge (DNS & DHCP)
   networking.firewall.interfaces.waydroid0 = {
     allowedUDPPorts = [ 53 67 ];
     allowedTCPPorts = [ 53 ];
   };
+
+  # Intel Backlight Fix (Disable systemd backlight save/restore & set default via udev)
+  systemd.services."systemd-backlight@backlight:intel_backlight".enable = false;
+
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", ATTR{brightness}="96000"
+  '';
+
+  # Kernel modules
   boot.kernelModules = [ "vmmon" "vmnet" ];
-  # Nix maintenance
+
+  # Nix Package Manager Settings & Maintenance
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -35,17 +45,17 @@ in
 
   # Time / Locale
   time.timeZone = "Asia/Tbilisi";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ka_GE.UTF-8";
-    LC_IDENTIFICATION = "ka_GE.UTF-8";
-    LC_MEASUREMENT = "ka_GE.UTF-8";
-    LC_MONETARY = "ka_GE.UTF-8";
-    LC_NAME = "ka_GE.UTF-8";
-    LC_NUMERIC = "ka_GE.UTF-8";
-    LC_PAPER = "ka_GE.UTF-8";
-    LC_TELEPHONE = "ka_GE.UTF-8";
-    LC_TIME = "ka_GE.UTF-8";
+    LC_ADDRESS = "en_GB.UTF-8";
+    LC_IDENTIFICATION = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
+    LC_MONETARY = "en_GB.UTF-8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_TELEPHONE = "en_GB.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
   };
 
   # User Account
