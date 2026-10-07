@@ -1,20 +1,24 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  # Display & Window Managers
   services.xserver.enable = true;
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
   services.displayManager.sddm.enable = true;
+
   services.desktopManager.plasma6.enable = true;
+  services.desktopManager.gnome.enable = true;
 
+  programs.ssh.askPassword = lib.mkForce "/run/current-system/sw/bin/ksshaskpass";
 
-  # Audio (Pipewire)
   services.pulseaudio.enable = false;
+
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
