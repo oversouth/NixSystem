@@ -8,9 +8,9 @@
 
   environment.systemPackages = with pkgs; [
     # Utilities
-    gparted wine firefox swaylock nerd-fonts.jetbrains-mono
-    # Wayland / Niri
-    wl-clipboard waybar grim slurp swaybg rofi
+    gparted wine firefox nerd-fonts.jetbrains-mono
+    # Wayland
+    wl-clipboard rofi
     # Android & Dev
     android-studio heimdall samloader-rs android-tools
     python3 cmake gcc git vscode godot nodejs tsx
