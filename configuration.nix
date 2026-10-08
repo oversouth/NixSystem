@@ -18,10 +18,27 @@ in
   networking.hostName = "BBRWAX9";
   networking.networkmanager.enable = true;
 
-  # Firewall rules for Waydroid bridge (DNS & DHCP)
-  networking.firewall.interfaces.waydroid0 = {
-    allowedUDPPorts = [ 53 67 ];
-    allowedTCPPorts = [ 53 ];
+  # OpenSSH Service
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PermitRootLogin = "prohibit-password";
+      PasswordAuthentication = true;
+    };
+  };
+
+  # Remote Desktop (GNOME)
+  services.gnome.gnome-remote-desktop.enable = true;
+
+  # Firewall rules
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 3389 5900 ]; # SSH, RDP, VNC
+    interfaces.waydroid0 = {
+      allowedUDPPorts = [ 53 67 ];
+      allowedTCPPorts = [ 53 ];
+    };
   };
 
   # Intel Backlight Fix (Disable systemd backlight save/restore & set default via udev)
