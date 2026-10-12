@@ -18,19 +18,19 @@ in
   # Graphics & Bluetooth
   hardware.graphics = {
     enable = true;
-    enable32Bit = true; #Legacy 32-bit graphics
+    enable32Bit = true; # Legacy 32-bit graphics
   };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
   # Peripheral Hardware Services
-  #services.ratbagd.enable = true; #Razer is poopy
+  # services.ratbagd.enable = true;
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
 
-  #hardware.openrazer.enable = true; #Poopy Razer
-  #hardware.openrazer.users = [ vars.username ]; #Poopy Razer
+  # hardware.openrazer.enable = true;
+  # hardware.openrazer.users = [ vars.username ];
 
   # Printing
   services.printing = {
