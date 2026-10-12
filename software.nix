@@ -2,8 +2,8 @@
 
 {
   nixpkgs.config = {
-    allowUnfree = true;
-    android_sdk.accept_license = true;
+    allowUnfree = true; #Proprietary garbage
+    android_sdk.accept_license = true; #Yet another proprietary garbage
   };
 
   environment.systemPackages = with pkgs; [
@@ -11,15 +11,15 @@
     gparted wine firefox nerd-fonts.jetbrains-mono
     # Wayland
     wl-clipboard rofi
-    # Android & Dev
-    android-studio heimdall samloader-rs android-tools
-    python3 cmake gcc git vscode godot nodejs tsx
+    # Development
+    android-studio android-tools
+    python3 cmake gcc git vscode godot tsx
     # Networking & Misc (obs-studio comes from programs.obs-studio below)
-    networkmanagerapplet yandex-music tree ayugram-desktop
+    networkmanagerapplet yandex-music ayugram-desktop
   ];
 
   programs.obs-studio.enable = true;
-  programs.k3b.enable = true;
+  #programs.k3b.enable = true; #Not needed for now
 
   programs.steam = {
     enable = true;
