@@ -2,8 +2,8 @@
 
 {
   nixpkgs.config = {
-    allowUnfree = true; #Proprietary garbage
-    android_sdk.accept_license = true; #Yet another proprietary garbage
+    allowUnfree = true; # Proprietary packages
+    android_sdk.accept_license = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -19,7 +19,7 @@
   ];
 
   programs.obs-studio.enable = true;
-  #programs.k3b.enable = true; #Not needed for now
+  # programs.k3b.enable = true; # Not needed for now
 
   programs.steam = {
     enable = true;
