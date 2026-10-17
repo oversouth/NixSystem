@@ -8,14 +8,14 @@
 
   environment.systemPackages = with pkgs; [
     # Utilities
-    gparted wine firefox nerd-fonts.jetbrains-mono
+    gparted wine firefox nerd-fonts.jetbrains-mono neovim yazi ghostty
     # Wayland
     wl-clipboard rofi
     # Development
     android-studio android-tools
     python3 cmake gcc git vscode godot tsx
     # Networking & Misc (obs-studio comes from programs.obs-studio below)
-    networkmanagerapplet yandex-music ayugram-desktop v2rayN
+    networkmanagerapplet yandex-music ayugram-desktop v2rayn
   ];
 
   programs.obs-studio.enable = true;
