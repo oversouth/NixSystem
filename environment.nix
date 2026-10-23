@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ confi, pkgs, ... }:
 
 let
   # Launcher for the NekoBox AppImage that appimage-run has already extracted.
