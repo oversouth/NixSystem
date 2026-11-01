@@ -47,6 +47,7 @@ in
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", ATTR{brightness}="96000"
   '';
+  services.udev.packages = [ pkgs.opentabletdriver ];
 
   # Kernel modules
   boot.kernelModules = [ "vmmon" "vmnet" ];
@@ -75,7 +76,7 @@ in
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # User Account
+  # Primary User Account (From vars.nix)
   users.users.${vars.username} = {
     isNormalUser = true;
     shell = pkgs.bash;
@@ -86,12 +87,20 @@ in
       "adbusers"
       "kvm"
       "docker"
+      "dialout"
     ];
     packages = with pkgs; [
       telegram-desktop
       fastfetch
       micro
     ];
+  };
+
+  # Additional User Account
+  users.users.username = {
+    isNormalUser = true;
+    description = "slop";
+    extraGroups = [ "wheel" "networkmanager" "docker" "kvm" ];
   };
 
   system.stateVersion = "26.05";
