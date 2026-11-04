@@ -11,15 +11,16 @@
 
   environment.systemPackages = with pkgs; [
     # Utilities
-    gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty
+    gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp
     # Wayland
     wl-clipboard rofi
     # Development
     android-studio android-tools
     python3 cmake gcc git vscode godot tsx
     ripgrep unzip
+    codex
     # Networking & Misc
-    networkmanagerapplet yandex-music ayugram-desktop v2rayn gnome-tweaks noctalia-shell nodejs_26
+    networkmanagerapplet yandex-music ayugram-desktop v2rayn gnome-tweaks noctalia-shell nodejs_26 discord
   ];
 
   programs.kdeconnect.enable = true;
