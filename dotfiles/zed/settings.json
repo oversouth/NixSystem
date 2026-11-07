@@ -9,29 +9,29 @@
 {
   "icon_theme": "Material Icon Theme",
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "agent": {
     "dock": "right",
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "cli_default_open_behavior": "new_window",
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "ui_font_size": 16,
   "buffer_font_size": 15,
@@ -40,4 +40,5 @@
     "light": "One Light",
     "dark": "macOS Classic Dark",
   },
+  "disable_ai": true,
 }
