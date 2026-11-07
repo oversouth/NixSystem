@@ -1,17 +1,16 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  vars = import ./vars.nix;
-in
 {
   imports = [
     ./hardware-configuration.nix
     ./boot-hardware.nix
     ./desktop.nix
+    ./printing.nix
     ./software.nix
     ./virtualization.nix
     ./storage.nix
     ./environment.nix
+    ./users.nix
   ];
 
   # Network
@@ -74,33 +73,6 @@ in
     LC_PAPER = "en_GB.UTF-8";
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
-  };
-
-  # Primary User Account (From vars.nix)
-  users.users.${vars.username} = {
-    isNormalUser = true;
-    shell = pkgs.bash;
-    description = vars.username;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "adbusers"
-      "kvm"
-      "docker"
-      "dialout"
-    ];
-    packages = with pkgs; [
-      telegram-desktop
-      fastfetch
-      micro
-    ];
-  };
-
-  # Additional User Account
-  users.users.username = {
-    isNormalUser = true;
-    description = "slop";
-    extraGroups = [ "wheel" "networkmanager" "docker" "kvm" ];
   };
 
   system.stateVersion = "26.05";

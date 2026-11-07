@@ -2,6 +2,14 @@
 
 NixOS configuration for the host `BBRWAX9`, split into small modules.
 
+## Modules
+
+- `configuration.nix`: system entrypoint and host level settings
+- `users.nix`: user accounts
+- `boot-hardware.nix`, `desktop.nix`, `software.nix`, `virtualization.nix`,
+  `storage.nix`, and `environment.nix`: focused system modules
+- `hardware-configuration.nix`: generated machine hardware settings
+
 ## Deploying
 
 The aliases in `environment.nix` expect this repository at `~/.config/nixos`:

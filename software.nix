@@ -11,13 +11,13 @@
 
   environment.systemPackages = with pkgs; [
     # Utilities
-    gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp
+    gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp lutris
     # Wayland
     wl-clipboard rofi
     # Development
     android-studio android-tools
     python3 cmake gcc git vscode godot tsx
-    ripgrep unzip
+    ripgrep unzip zed-editor
     codex
     # Networking & Misc
     networkmanagerapplet yandex-music ayugram-desktop v2rayn gnome-tweaks noctalia-shell nodejs_26 discord
