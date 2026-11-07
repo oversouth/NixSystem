@@ -1,0 +1,46 @@
+[Default Applications]
+x-scheme-handler/tg=userapp-AyuGram Desktop-5GU0V3.desktop
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-QJRYV3.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+text/html=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+x-scheme-handler/i5JtwbP6zyMEAy9LLnRAGLgJQGdRFfsAu4=Verus-Desktop.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-K39VV3.desktop
+message/rfc822=userapp-Thunderbird-K39VV3.desktop
+x-scheme-handler/mid=userapp-Thunderbird-K39VV3.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-83KVV3.desktop
+text/calendar=userapp-Thunderbird-83KVV3.desktop
+application/x-extension-ics=userapp-Thunderbird-83KVV3.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-83KVV3.desktop
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
+x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/codex=chatgpt.desktop
+application/pdf=org.gnome.Papers.desktop
+
+[Added Associations]
+x-scheme-handler/tg=org.telegram.desktop.desktop;userapp-AyuGram Desktop-5GU0V3.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;userapp-AyuGram Desktop-QJRYV3.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+x-scheme-handler/i5JtwbP6zyMEAy9LLnRAGLgJQGdRFfsAu4=Verus-Desktop.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-K39VV3.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-K39VV3.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-83KVV3.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-83KVV3.desktop;
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
+application/pdf=org.gnome.Papers.desktop;

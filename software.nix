@@ -13,17 +13,16 @@
     # Utilities
     gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp lutris
     # Wayland
-    wl-clipboard rofi
+    wl-clipboard
     # Development
     android-studio android-tools
-    python3 cmake gcc git vscode godot tsx
+    python3 cmake gcc git vscode tsx
     ripgrep unzip zed-editor
     codex
     # Networking & Misc
-    networkmanagerapplet yandex-music ayugram-desktop v2rayn gnome-tweaks noctalia-shell nodejs_26 discord
+    networkmanagerapplet yandex-music ayugram-desktop v2rayn noctalia-shell nodejs_26 discord
   ];
 
-  programs.kdeconnect.enable = true;
   programs.obs-studio.enable = true;
 
   programs.steam = {

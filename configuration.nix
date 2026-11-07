@@ -27,13 +27,10 @@
     };
   };
 
-  # Remote Desktop (GNOME)
-  services.gnome.gnome-remote-desktop.enable = true;
-
   # Firewall rules
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 3389 5900 ]; # SSH, RDP, VNC
+    allowedTCPPorts = [ 22 5900 ]; # SSH and VNC
     interfaces.waydroid0 = {
       allowedUDPPorts = [ 53 67 ];
       allowedTCPPorts = [ 53 ];

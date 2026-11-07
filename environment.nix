@@ -35,9 +35,11 @@ in
   environment.shellAliases = {
     # Build from the same checkout that `nixconf` edits.
     rebuild = "sudo nixos-rebuild switch -I nixos-config=$HOME/.config/nixos/configuration.nix";
+    hm-rebuild = "home-manager switch -f $HOME/.config/nixos/home-manager.nix";
     sysinfo = "fastfetch";
     cls = "clear";
     nixconf = "micro ~/.config/nixos/configuration.nix";
+    hmconf = "micro ~/.config/nixos/home-manager.nix";
 
     pylearning = "cd $HOME/Projects/pylearning && source .venv/bin/activate";
   };

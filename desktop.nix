@@ -8,12 +8,10 @@
     variant = "";
   };
 
-  # Display Manager & Desktop Environments
-  services.displayManager.gdm.enable = true; # GNOME Display Manager
-  #services.desktopManager.plasma6.enable = true; # KDE Plasma 6 (will remove soon) temprary removal,if it sticks to be removed
-  services.desktopManager.gnome.enable = true; # GNOME (50, waiting for 51 on nixpkgs 26.05)
+  # Display manager and Wayland compositor
+  services.displayManager.sddm.enable = true;
   programs.hyprland.enable = true;
-  programs.ssh.askPassword = lib.mkForce "/run/current-system/sw/bin/ksshaskpass"; # Use KDE sshaskpass for ssh pwd prompt (todo: replace)
+  programs.ssh.askPassword = lib.mkForce "/run/current-system/sw/bin/ksshaskpass";
   # Audio (PipeWire)
   services.pulseaudio.enable = false; # Disable PulseAudio, use PipeWire instead
   security.rtkit.enable = true; # Real-time scheduling for PipeWire
