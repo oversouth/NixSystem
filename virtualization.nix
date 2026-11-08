@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   virtualisation.docker = {
@@ -10,8 +10,4 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.vmware.host.enable = true;
   
-  virtualisation.waydroid = {
-    enable = true;
-    package = pkgs.waydroid-nftables;
-  };
 }

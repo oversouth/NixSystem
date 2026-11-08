@@ -57,7 +57,7 @@ in
   home.homeDirectory = "/home/pavelzaikin";
   home.stateVersion = "25.11";
   home.shellAliases = {
-    hm-rebuild = "home-manager switch -b backup -f $HOME/.config/nixos/home-manager.nix";
+    hm-rebuild = "home-manager switch -b hm-backup-$(date +%Y%m%d-%H%M%S) -f $HOME/.config/nixos/home-manager.nix";
     hmconf = "micro ~/.config/nixos/home-manager.nix";
   };
 

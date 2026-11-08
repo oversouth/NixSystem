@@ -31,10 +31,6 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 22 5900 ]; # SSH and VNC
-    interfaces.waydroid0 = {
-      allowedUDPPorts = [ 53 67 ];
-      allowedTCPPorts = [ 53 ];
-    };
   };
 
   # Intel Backlight Fix (Disable systemd backlight save/restore & set default via udev)

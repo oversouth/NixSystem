@@ -35,7 +35,7 @@ in
   environment.shellAliases = {
     # Build from the same checkout that `nixconf` edits.
     rebuild = "sudo nixos-rebuild switch -I nixos-config=$HOME/.config/nixos/configuration.nix";
-    hm-rebuild = "home-manager switch -b backup -f $HOME/.config/nixos/home-manager.nix";
+    hm-rebuild = "home-manager switch -b hm-backup-$(date +%Y%m%d-%H%M%S) -f $HOME/.config/nixos/home-manager.nix";
     sysinfo = "fastfetch";
     cls = "clear";
     nixconf = "micro ~/.config/nixos/configuration.nix";
