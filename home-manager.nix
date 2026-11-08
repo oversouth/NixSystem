@@ -10,6 +10,7 @@ let
     "fontconfig/fonts.conf"
     "ghostty/config"
     "ghostty/config.ghostty"
+    "ghostty/themes/BreezeDark"
     "git/ignore"
     "gtk-3.0/colors.css"
     "gtk-3.0/gtk.css"
@@ -19,8 +20,8 @@ let
     "gtk-4.0/settings.ini"
     "gtkrc"
     "gtkrc-2.0"
-    "hypr/gesture-helper.py"
-    "hypr/hyprland.conf"
+    "hypr/hyprland.lua"
+    "hypr/hyprlock.conf"
     "micro/bindings.json"
     "micro/settings.json"
     "mimeapps.list"
@@ -55,6 +56,10 @@ in
   home.username = "pavelzaikin";
   home.homeDirectory = "/home/pavelzaikin";
   home.stateVersion = "25.11";
+  home.shellAliases = {
+    hm-rebuild = "home-manager switch -b backup -f $HOME/.config/nixos/home-manager.nix";
+    hmconf = "micro ~/.config/nixos/home-manager.nix";
+  };
 
   xdg.enable = true;
   xdg.configFile = builtins.listToAttrs (map (path: {

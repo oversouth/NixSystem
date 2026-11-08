@@ -13,7 +13,7 @@
     # Utilities
     gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp lutris
     # Wayland
-    wl-clipboard
+    wl-clipboard hyprlock
     # Development
     android-studio android-tools
     python3 cmake gcc git vscode tsx

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   services.xserver.enable = true;
@@ -8,10 +8,19 @@
     variant = "";
   };
 
-  # Display manager and Wayland compositor
-  services.displayManager.sddm.enable = true;
+  # Text login prompt which starts Hyprland after authentication.
+  # Hyprlock is the in-session screen locker, not a login manager.
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+      user = "greeter";
+    };
+  };
+  security.pam.services.hyprlock = { };
+
+  # Wayland compositor
   programs.hyprland.enable = true;
-  programs.ssh.askPassword = lib.mkForce "/run/current-system/sw/bin/ksshaskpass";
   # Audio (PipeWire)
   services.pulseaudio.enable = false; # Disable PulseAudio, use PipeWire instead
   security.rtkit.enable = true; # Real-time scheduling for PipeWire

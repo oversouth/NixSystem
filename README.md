@@ -28,19 +28,25 @@ After the first switch, `rebuild` runs the same command and `nixconf` opens
 
 The listed files are linked into their usual `~/.config` locations, so apps
 continue to read their normal paths while Home Manager supplies the contents.
-Activate Home Manager once with:
+Activate Home Manager the first time with:
 
 ```sh
-home-manager switch -f ~/.config/nixos/home-manager.nix
+home-manager switch -b backup -f ~/.config/nixos/home-manager.nix
 ```
 
-After changing a config in `dotfiles/` or `home-manager.nix`, apply it with
-`hm-rebuild` (or run the command above). Restart the affected app to reload its
-settings. `hmconf` opens the Home Manager entry point.
+This preserves any existing files that conflict with Home Manager's links. The
+first switch installs the `hm-rebuild` and `hmconf` shell aliases. Open a
+new shell, then use `hm-rebuild` after changing a config in `dotfiles/` or
+`home-manager.nix`. Restart the affected app to reload its settings. `hmconf`
+opens the Home Manager entry point.
 
 It manages selected application settings under `~/.config` from `dotfiles/`.
 Browser profiles, tokens, databases, caches, session state, and KDE/Plasma
 settings are excluded.
+
+Hyprland 0.55 uses `hyprland.lua`, so the config in `dotfiles/hypr/` is Lua;
+the old `hyprland.conf` format is ignored by this installed version. Login uses
+greetd with tuigreet, and Hyprlock is the in-session locker on Super+L.
 
 ## Bootstrapping a new machine
 
