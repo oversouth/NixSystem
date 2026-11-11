@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "global_lsp_settings": {
+    "button": false
+  },
+  "diagnostics": {
+    "button": false
+  },
   "icon_theme": "Material Icon Theme",
   "project_panel": {
     "dock": "left",
@@ -15,6 +21,7 @@
     "dock": "left",
   },
   "collaboration_panel": {
+    "button": false,
     "dock": "left",
   },
   "agent": {

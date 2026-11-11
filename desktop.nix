@@ -17,6 +17,8 @@
       user = "greeter";
     };
   };
+  # Unlock GNOME Keyring during greetd login so Zed can persist its session.
+  security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.hyprlock = { };
 
   # Wayland compositor

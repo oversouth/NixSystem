@@ -11,20 +11,6 @@ if [[ $# -gt 1 || ( -n "$dry_run" && "$dry_run" != "--dry-run" ) ]]; then
   exit 2
 fi
 
-declare -a hm_remove=()
-while IFS= read -r line; do
-  if [[ "$line" =~ ^([0-9]{4}-[0-9]{2}-[0-9]{2})[[:space:]]+([0-9]{2}:[0-9]{2})[[:space:]]+:[[:space:]]+id[[:space:]]+([0-9]+) ]]; then
-    generation_date="${BASH_REMATCH[1]}"
-    generation_clock="${BASH_REMATCH[2]}"
-    generation_id="${BASH_REMATCH[3]}"
-    [[ "$line" == *"(current)"* ]] && continue
-    generation_time="$(date --date="$generation_date $generation_clock:00" +%s)"
-    if (( generation_time < cutoff )); then
-      hm_remove+=("$generation_id")
-    fi
-  fi
-done < <(home-manager generations)
-
 # Query the system profile through sudo because it is owned by root.
 system_generations="$(sudo nix-env --profile "$system_profile" --list-generations)"
 declare -a system_remove=()
@@ -42,16 +28,8 @@ while IFS= read -r line; do
 done <<< "$system_generations"
 
 if [[ "$dry_run" == "--dry-run" ]]; then
-  printf 'Would remove Home Manager generation IDs: %s\n' "${hm_remove[*]:-(none)}"
   printf 'Would remove NixOS generation IDs: %s\n' "${system_remove[*]:-(none)}"
   exit 0
-fi
-
-if ((${#hm_remove[@]})); then
-  printf 'Removing Home Manager generations: %s\n' "${hm_remove[*]}"
-  home-manager remove-generations "${hm_remove[@]}"
-else
-  echo "No Home Manager generations older than $retention."
 fi
 
 if ((${#system_remove[@]})); then

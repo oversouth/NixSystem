@@ -11,12 +11,12 @@
 
   environment.systemPackages = with pkgs; [
     # Utilities
-    gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp lutris
+    gparted wine firefox nerd-fonts.jetbrains-mono vis yazi ghostty grim slurp tailscale
     # Wayland
     wl-clipboard hyprlock
     # Development
-    android-studio android-tools
-    python3 cmake gcc git vscode tsx
+    android-tools
+    python3 cmake gcc git tsx
     ripgrep unzip zed-editor
     codex
     # Networking & Misc
@@ -24,7 +24,9 @@
   ];
 
   programs.obs-studio.enable = true;
-
+  services.gnome.gnome-keyring.enable = true;
+  services.tailscale.enable = true;
+  
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

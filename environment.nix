@@ -1,11 +1,7 @@
 { pkgs, ... }:
 
 let
-  # Launcher for the NekoBox AppImage that appimage-run has already extracted.
-  # The cache directory name is a hash that changes whenever the AppImage
-  # changes, so look up the newest extracted copy instead of hardcoding it.
-  # The Qt overrides make the bundled Qt use X11 (xcb) with its own plugins, and
-  # XDG_DATA_DIRS is unset so host data dirs don't clash with the bundled libs.
+  # Launcher for NekoBox AppImage
   vpn = pkgs.writeShellScriptBin "vpn" ''
     root="$HOME/.cache/appimage-run"
     bin="$(${pkgs.findutils}/bin/find "$root" -maxdepth 2 -name nekobox -type f -printf '%T@ %p\n' 2>/dev/null \
@@ -24,23 +20,23 @@ let
   '';
 in
 {
-  # Environment variables
+  # Session variables
   environment.sessionVariables = {
-    TERMINAL = "konsole";
+    TERMINAL = "ghostty";
   };
 
+  # System packages
   environment.systemPackages = [ vpn ];
 
   # Shell aliases
   environment.shellAliases = {
-    # Build from the same checkout that `nixconf` edits.
+    # System rebuild alias
     rebuild = "sudo nixos-rebuild switch -I nixos-config=$HOME/.config/nixos/configuration.nix";
-    hm-rebuild = "home-manager switch -b hm-backup-$(date +%Y%m%d-%H%M%S) -f $HOME/.config/nixos/home-manager.nix";
+
+    # Shortcuts
     sysinfo = "fastfetch";
     cls = "clear";
     nixconf = "micro ~/.config/nixos/configuration.nix";
-    hmconf = "micro ~/.config/nixos/home-manager.nix";
-
     pylearning = "cd $HOME/Projects/pylearning && source .venv/bin/activate";
   };
 }

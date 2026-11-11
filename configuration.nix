@@ -11,7 +11,13 @@
     ./storage.nix
     ./environment.nix
     ./users.nix
+    <home-manager/nixos>
   ];
+
+  # Home Manager runs as part of NixOS and shares the system package set.
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.pavelzaikin = import ./home.nix;
 
   # Network
   networking.hostName = "BBRWAX9";
@@ -30,7 +36,8 @@
   # Firewall rules
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 5900 ]; # SSH and VNC
+    allowedTCPPorts = [ 22 5900 8123 ]; # SSH and VNC
+    allowedUDPPorts = [ 5353 ];
   };
 
   # Intel Backlight Fix (Disable systemd backlight save/restore & set default via udev)
