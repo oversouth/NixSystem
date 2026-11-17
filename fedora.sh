@@ -10,7 +10,7 @@ fi
 USERNAME="${SUDO_USER:-$(whoami)}"
 USER_HOME=$(eval echo "~$USERNAME")
 
-echo "[+] Начинаем развертывание чистой Fedora с KDE Plasma для пользователя: $USERNAME"
+echo "[+] Начинаем развертывание Fedora с KDE Plasma для пользователя: $USERNAME"
 
 # 1. Обновление системы и подключение RPM Fusion (Free & Nonfree)
 echo "[+] Настройка репозиториев и обновление системы..."
@@ -20,13 +20,13 @@ dnf install -y \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf config-manager setopt fedora-cisco-openh264.enabled=1 || true
 
-# 2. Установка KDE Plasma и SDDM (если ставил с минимального образа)
+# 2. Установка KDE Plasma и SDDM
 echo "[+] Установка KDE Plasma Workspaces и SDDM..."
 dnf group install -y kde-desktop-environment
 systemctl enable sddm
 systemctl set-default graphical.target
 
-# 3. Установка основного софта и утилит (без единого следа Hyprland)
+# 3. Установка основного софта и утилит
 echo "[+] Установка пакетов (терминалы, разработка, утилиты)..."
 dnf install -y \
     ghostty yazi micro fastfetch git ripgrep unzip wget curl \
@@ -58,7 +58,7 @@ cat << 'EOF' > /etc/udev/rules.d/99-backlight.rules
 ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", ATTR{brightness}="96000"
 EOF
 
-# Запрет WirePlumber переключать Bluetooth-наушники в режим гарнитуры ("бочки")
+# Запрет WirePlumber переключать Bluetooth-наушники в режим гарнитуры («бочки»)
 mkdir -p /etc/wireplumber/wireplumber.conf.d
 cat << 'EOF' > /etc/wireplumber/wireplumber.conf.d/10-bluetooth-policy.conf
 wireplumber.settings = {
@@ -66,12 +66,12 @@ wireplumber.settings = {
 }
 EOF
 
-# 7. Клонирование репозитория и перенос нужных дотфайлов (игнорируя hypr)
-echo "[+] Развертывание дотфайлов (Ghostty, Yazi и др., без Hyprland)..."
-REPO_DIR="$USER_HOME/NixConfig"
+# 7. Клонирование реального репозитория NixSystem и перенос дотфайлов (минуя hypr/noctalia)
+echo "[+] Развертывание дотфайлов из репозитория oversouth/NixSystem..."
+REPO_DIR="$USER_HOME/NixSystem"
 
 if [ ! -d "$REPO_DIR" ]; then
-  su - "$USERNAME" -c "git clone https://github.com/oversouth/NixConfig $REPO_DIR"
+  su - "$USERNAME" -c "git clone https://github.com/oversouth/NixSystem $REPO_DIR"
 fi
 
 if [ -d "$REPO_DIR/dotfiles" ]; then
@@ -92,6 +92,6 @@ echo "[+] Настройка групп пользователя ($USERNAME)..."
 usermod -aG wheel,dialout,adbusers "$USERNAME"
 
 echo "======================================================="
-echo "[✔] Готово! Чистая Fedora + KDE Plasma настроены."
-echo "[✔] Перезагружайся: reboot"
+echo "[✔] Всё готово! Чистая Fedora + KDE Plasma настроены."
+echo "[✔] Перезагружайся командой: reboot"
 echo "======================================================="
