@@ -13,4 +13,11 @@
 
   # Обязательно для UEFI, чтобы обновлять записи в NVRAM
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Поддержка Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
 }

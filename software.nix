@@ -18,7 +18,7 @@
     android-tools
     python3 cmake gcc git tsx
     ripgrep unzip zed-editor
-    codex
+    codex kdePackages.dolphin kdePackages.kio-extras kdePackages.kio-fuse
     # Networking & Misc
     networkmanagerapplet yandex-music ayugram-desktop v2rayn noctalia-shell nodejs_26 discord
   ];

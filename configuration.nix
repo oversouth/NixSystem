@@ -11,13 +11,7 @@
     ./storage.nix
     ./environment.nix
     ./users.nix
-    <home-manager/nixos>
   ];
-
-  # Home Manager runs as part of NixOS and shares the system package set.
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.pavelzaikin = import ./home.nix;
 
   # Network
   networking.hostName = "BBRWAX9";

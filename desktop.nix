@@ -13,7 +13,9 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+      # Persist the last successfully authenticated username so the greeter
+      # only prompts for the password after the first login.
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
       user = "greeter";
     };
   };
